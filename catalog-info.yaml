@@ -1,14 +1,9 @@
 apiVersion: backstage.io/v1alpha1
-kind: Resource
+kind: Component
 metadata:
-  name: infra-backstage
-  namespace: backstage
-  title: Backstage
-  description: Backstage
-  tags:
-    - terraform
-    - poc
-    - test
+  name: backstage
+  annotations:
+    github.com/project-slug: rca0/backstage
 spec:
-  type: iac-repo
-  owner: rca0
+  type: other
+  lifecycle: unknown
