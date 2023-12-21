@@ -53,6 +53,7 @@ spec:
           type: boolean
           description: 'Select the `lambda` will need to access resources that are in the VPC'
           ui:help: 'Check if `lambda` will need to access resources that are in the VPC (e.g. RDS, Redis)'
+
     - title: 'Infra Repository'
       required: [repoUrl]
       properties:
@@ -65,19 +66,21 @@ spec:
               - github.com
             allowedOwners:
               - rca0
+              
   steps:
     - id: fetch-base
       name: Applying the template (Lambda)
       action: fetch:template
       input:
         targetPath: backstage/${{ parameters.name }}/
-        url: ./templates/lambda
+        url: ./skeleton
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
           memory: ${{ parameters.memory }}
           timeout: ${{ parameters.timeout }}
           vpc: ${{ parameters.vpc }}
+
     - id: publish_lambda
       name: Creating PR AWS Lambda
       action: publish:github:pull-request
