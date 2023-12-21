@@ -13,47 +13,47 @@ spec:
       required: [name, description, memory, timeout]
       properties:
         name:
-          title: 'Nome'
+          title: 'Name'
           type: string
-          description: 'Nome da `lambda`'
+          description: 'Name of `lambda`'
           default: 'post-backstage-template'
           maxLength: 50
           pattern: '^[a-zA-Z0-9\-]*$'
           ui:autofocus: true
-          ui:help: 'Máximo de 50 caracteres. Permite letras, números e traço'
+          ui:help: 'Maximum 50 characters. Allows letters, numbers and dash'
         description:
-          title: 'Descrição'
+          title: 'Description'
           type: string
-          description: 'Descrição da lambda'
+          description: 'Lambda description'
           maxLength: 100
           default: 'post-backstage-template'
           ui:autofocus: true
-          ui:help: 'Resumidamente informe o objetivo da sua `lambda`'
+          ui:help: 'Briefly state the objective of your `lambda`'
         memory:
-          title: 'Memória'
+          title: 'Memory'
           type: integer
-          description: 'Limite de memória (MB) da função `lambda`'
+          description: 'Memory limit (MB) of the `lambda` function'
           enum:
           - 128
           - 256
           - 512
           default: 128
           ui:autofocus: true
-          ui:help: 'Quanto mais memória, maior o custo da `lambda`'
+          ui:help: 'The more memory, the higher the cost of `lambda`'
         timeout:
           title: 'Timeout'
           type: string
-          description: 'Tempo limite em segundos de execução da `lambda`'
+          description: 'Lambda' execution timeout in seconds'
           default: '10'
           pattern: '^([1-9]|[1-9][0-9]|[1-8][0-9][0-9]|900)$'
           ui:autofocus: true
-          ui:help: 'Até o limite de 900 segundos'
+          ui:help: 'Up to 900 seconds limit'
         vpc:
           title: 'Virtual Private Cloud'
           type: boolean
-          description: 'Marque se a `lambda` precisará acessar recursos que estão na VPC'
-          ui:help: 'Marque se a `lambda` precisará acessar recursos que estão na VPC (ex: RDS, Redis)'
-    - title: 'Repositório da Infraestrutura'
+          description: 'Select the `lambda` will need to access resources that are in the VPC'
+          ui:help: 'Check if `lambda` will need to access resources that are in the VPC (e.g. RDS, Redis)'
+    - title: 'Infra Repository'
       required: [repoUrl]
       properties:
         repoUrl:
@@ -67,7 +67,7 @@ spec:
               - rca0
   steps:
     - id: fetch-base
-      name: Aplicando template (Lambda)
+      name: Applying the template (Lambda)
       action: fetch:template
       input:
         targetPath: backstage/${{ parameters.name }}/
@@ -79,19 +79,19 @@ spec:
           timeout: ${{ parameters.timeout }}
           vpc: ${{ parameters.vpc }}
     - id: publish_lambda
-      name: Criando PR para Lambda
+      name: Creating PR AWS Lambda
       action: publish:github:pull-request
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        sourcePath: backstage/
-        targetPath: ./
-        description: Codigo da lambda ${{ parameters.name }}.
+        sourcePath: backstage
+        targetPath: ./aws-lambda
+        description: Lambda Code ${{ parameters.name }}.
         title: "feat: ${{ parameters.name }}"
         branchName: "feat-${{ parameters.name }}"
 
   output:
     links:
-      - title: Repositório Lambda
+      - title: Lambda Repository
         url: ${{steps.publish_lambda.output.remoteUrl}}
-        text: "PR da Lambda"
+        text: "PR Lambda Code"
