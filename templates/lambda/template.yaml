@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: aws-lambda
+  name: backstage
   title: Create AWS lambda
   description: Criação de AWS lambda
   tags: [rca0, medium, post]
@@ -70,7 +70,7 @@ spec:
       name: Aplicando template (Lambda)
       action: fetch:template
       input:
-        targetPath: aws-lambda/${{ parameters.name }}/
+        targetPath: backstage/${{ parameters.name }}/
         url: ./templates/lambda
         values:
           name: ${{ parameters.name }}
@@ -84,7 +84,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        sourcePath: aws-lambda/
+        sourcePath: backstage/
         targetPath: ./
         description: Codigo da lambda ${{ parameters.name }}.
         title: "feat: ${{ parameters.name }}"
