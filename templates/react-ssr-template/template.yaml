@@ -25,14 +25,11 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
-        owner:
-          title: Owner
+        repo_name:
+          title: Repository name
           type: string
-          description: Owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
+          description: Github repository name.
+          
     - title: 'Frontend Reactjs Repository'
       required: [repoUrl]
       properties:
@@ -45,6 +42,9 @@ spec:
               - github.com
             allowedOwners:
               - rca0
+            allowedRepos:
+              - ${{ parameters.repo_name }}
+         
   steps:
     - id: template
       name: Fetch Skeleton + Template
@@ -58,7 +58,7 @@ spec:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
+          owner: ${{ values.owner }}
 
     - id: publish
       name: Publish
