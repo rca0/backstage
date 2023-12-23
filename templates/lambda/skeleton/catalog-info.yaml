@@ -1,13 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ parameters.name | replace(' ', '-').lower() | replace('_', '-').lower() }}
-  {%- if parameters.description %}
-  description: ${{ parameters.description | default('') }}
+  name: ${{values.component_id | dump}}
+  {%- if values.description %}
+  description: ${{values.description | dump}}
   {%- endif %}
-  annotations:
-    backstage.io/techdocs-ref: dir:.
 spec:
   type: aws-lambda
   lifecycle: experimental
-  owner: ${{ values.owner | default('') }}
+  owner: ${{values.owner | dump}}
