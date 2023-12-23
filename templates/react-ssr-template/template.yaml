@@ -43,8 +43,6 @@ spec:
               - github.com
             allowedOwners:
               - rca0
-            allowedRepos:
-              - ${{ parameters.repo_name }}
          
   steps:
     - id: template
