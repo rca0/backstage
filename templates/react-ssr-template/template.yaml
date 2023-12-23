@@ -29,7 +29,9 @@ spec:
           title: Repository name
           type: string
           description: Github repository name.
-          
+          default: 'backstage'
+          ui:autofocus: true
+
     - title: 'Frontend Reactjs Repository'
       required: [repoUrl]
       properties:
