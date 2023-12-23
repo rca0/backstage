@@ -68,8 +68,8 @@ spec:
         sourcePath: backstage
         targetPath: ./reactjs
         description: This is ${{ parameters.component_id }}
-        title: "feat: ${{ parameters.name }}"
-        branchName: "feat-${{ parameters.name }}"
+        title: "feat: ${{ parameters.component_id }}"
+        branchName: "feat-${{ parameters.component_id }}"
 
     - id: register
       name: Register
