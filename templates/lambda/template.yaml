@@ -93,12 +93,12 @@ spec:
         title: "feat: ${{ parameters.name }}"
         branchName: "feat-${{ parameters.name }}"
 
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps.publish_lambda.output.repoContentsUrl }}
-        catalogInfoPath: '/catalog-info.yaml'
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: ${{ steps.publish_lambda.output.repoContentsUrl }}
+    #     catalogInfoPath: '/catalog-info.yaml'
 
   output:
     links:
