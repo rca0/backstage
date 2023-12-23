@@ -1,0 +1,8 @@
+site_name: "test-reactjs"
+site_description: "testing"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
