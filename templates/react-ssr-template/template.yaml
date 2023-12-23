@@ -33,18 +33,18 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-      - title: 'Infra Repository'
-        required: [repoUrl]
-        properties:
-          repoUrl:
-            title: Repository
-            type: string
-            ui:field: RepoUrlPicker
-            ui:options:
-              allowedHosts:
-                - github.com
-              allowedOwners:
-                - rca0
+    - title: 'Frontend Reactjs Repository'
+      required: [repoUrl]
+      properties:
+        repoUrl:
+          title: Repository
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+            allowedOwners:
+              - rca0
   steps:
     - id: template
       name: Fetch Skeleton + Template
