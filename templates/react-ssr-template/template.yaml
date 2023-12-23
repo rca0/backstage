@@ -33,17 +33,18 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
+      - title: 'Infra Repository'
+        required: [repoUrl]
+        properties:
+          repoUrl:
+            title: Repository
+            type: string
+            ui:field: RepoUrlPicker
+            ui:options:
+              allowedHosts:
+                - github.com
+              allowedOwners:
+                - rca0
   steps:
     - id: template
       name: Fetch Skeleton + Template
