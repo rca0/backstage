@@ -1,9 +1,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ parameters.name | default('aws-lambda') }}
-  {%- if parameters.description %}
-  description: ${{ parameters.description | default('') }}
+  name: ${{ values.name | default('aws-lambda') }}
+  {%- if values.description %}
+  description: ${{ values.description | default('') }}
   {%- endif %}
   annotations:
     backstage.io/techdocs-ref: dir:.
