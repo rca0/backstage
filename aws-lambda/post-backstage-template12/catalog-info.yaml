@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: post-backstage-template12
+  description: post-backstage-template
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: aws-lambda
+  lifecycle: experimental
+  owner: 
