@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: backstage
   title: Create AWS lambda
-  description: Criação de AWS lambda
+  description: Create AWS lambda
   tags: [rca0, medium, post]
 spec:
   owner: rca0
