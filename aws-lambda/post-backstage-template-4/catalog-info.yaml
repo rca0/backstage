@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: post-backstage-template-4
+  description: post-backstage-template-4
+  annotations:
+    tags: "infra, aws, lambda"
+spec:
+  type: infra
+  lifecycle: experimental
+  owner: rca0
